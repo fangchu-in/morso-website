@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "Restaurant",
   "name": "Morso",
-  "image": "https://yourdomain.com/logo.png",
+  "image": "morso-logo-blue-tp.png",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "S. No. 33, The Bougain Studio, Unit 4, Ashtavinayak Rd, Balewadi",
@@ -941,17 +941,18 @@ function topFunction() {
 </script>
 
 <script>
-    // DYNAMIC REVIEWS: List of 6-8 reviews to rotate randomly
-    const reviews = [
-        { text: "The best flat white in Balewadi! Truly unhurried vibes.", author: "Regular Guest" },
-        { text: "Finally, a spot in Pune that understands simple food done right.", author: "Coffee Lover" },
-        { text: "The scrambled eggs are a revelation. Perfect for a slow morning.", author: "Breakfast Fan" },
-        { text: "A calming spot in the middle of the city. I stayed longer than intended!", author: "Local Neighbour" },
-        { text: "Love the minimalist feel. The Korean Espresso is a must-try.", author: "Caffeine Addict" },
-        { text: "Authentic vibes and genuine comfort. My new favourite neighbourhood space.", author: "Pune Foodie" },
-        { text: "Great place for easy conversations. The unhurried joy is real here.", author: "Weekend Visitor" },
-        { text: "Simple, reassuring food. Exactly what Balewadi needed.", author: "Daily Regular" }
-    ];
+   
+// DYNAMIC REVIEWS: Condensed from your actual customer feedback
+const reviews = [
+    { text: "Perfectly crisp garlic mushroom pizza and a rich, smooth mocha. You can taste the quality in every sip.", author: "Vaibhav Dugar" },
+    { text: "A warm little corner for people who love good food, good coffee, and good company. Truly special.", author: "Vaibhav Dugar" },
+    { text: "The kind of friendly neighbourhood cafe where you can sit quietly with a book or have a meaningful chat.", author: "Vaibhav Dugar" },
+    { text: "Every bite felt comforting and satisfying. There is a certain positivity in the air here.", author: "Vaibhav Dugar" },
+    { text: "What touched my heart was the sincerity. The founders genuinely listen to every small detail.", author: "Vaibhav Dugar" },
+    { text: "Happy, smiling faces and a warm, friendly vibe. A place that makes you want to stay a little longer.", author: "Vaibhav Dugar" },
+    { text: "Good coffee, clean space and a promising menu! A great addition to Balewadi.", author: "Rahul Mali" },
+    { text: "Quiet, easy to talk, and plenty of parking. Exactly what a neighbourhood cafe should be.", author: "Rahul Mali" }
+];
 
     // Function to pick and display a random review
     function showRandomReview() {
