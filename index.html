@@ -507,6 +507,304 @@ footer a:hover { text-decoration: underline; }
 .menu-item.hidden { display: none; }
 .section-block.all-hidden { display: none; }
 
+/* ── CART BUTTONS on menu items ── */
+.item-row { position: relative; }
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.cart-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1.5px solid var(--morsoblue);
+  background: transparent;
+  color: var(--morsoblue);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+  padding: 0;
+  font-family: var(--brand-font);
+}
+.cart-btn:hover { background: var(--morsoblue); color: #fff; }
+.cart-btn.minus { display: none; }
+
+.cart-qty {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--dark);
+  min-width: 14px;
+  text-align: center;
+  display: none;
+}
+
+body.dark .cart-btn { border-color: #7aabee; color: #7aabee; }
+body.dark .cart-btn:hover { background: #7aabee; color: #1a1a1a; }
+body.dark .cart-qty { color: #f0f0f0; }
+
+/* ── CART FAB ── */
+#cartFab {
+  display: none;
+  position: relative;
+  background: var(--morsogreen);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.3rem;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.2);
+  transition: transform 0.15s, box-shadow 0.15s;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+#cartFab:hover { transform: scale(1.08); }
+#cartFab.has-items { display: flex; }
+
+.cart-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: bold;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--brand-font);
+}
+
+/* ── ORDER MODAL ── */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 500;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+
+.modal-sheet {
+  background: var(--white);
+  width: 100%;
+  max-width: 650px;
+  border-radius: 20px 20px 0 0;
+  padding: 24px 20px 32px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+body.dark .modal-sheet { background: #222; }
+
+.modal-handle {
+  width: 40px; height: 4px;
+  background: var(--border);
+  border-radius: 2px;
+  margin: 0 auto 18px;
+}
+
+.modal-title {
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--morsoblue);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.order-items { margin-bottom: 16px; }
+
+.order-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+  gap: 8px;
+}
+.order-item-row:last-child { border-bottom: none; }
+
+.order-item-name { flex: 1; font-weight: bold; }
+.order-item-qty-ctrl { display: flex; align-items: center; gap: 8px; }
+.order-item-qty { font-weight: bold; min-width: 20px; text-align: center; }
+.order-remove { color: #e74c3c; font-size: 0.75rem; cursor: pointer; border: none; background: none; padding: 0; font-family: var(--brand-font); }
+
+.order-field {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-family: var(--brand-font);
+  font-size: 0.88rem;
+  background: var(--white);
+  color: var(--dark);
+  outline: none;
+  margin-bottom: 10px;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+.order-field:focus { border-color: var(--morsoblue); }
+body.dark .order-field { background: #2a2a2a; color: #f0f0f0; border-color: #444; }
+
+.order-field-label {
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--grey);
+  margin-bottom: 4px;
+  display: block;
+}
+
+.captcha-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.captcha-question {
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: var(--dark);
+  flex-shrink: 0;
+}
+.captcha-input {
+  width: 70px;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 7px;
+  font-family: var(--brand-font);
+  font-size: 0.88rem;
+  text-align: center;
+  outline: none;
+  background: var(--white);
+  color: var(--dark);
+  transition: border-color 0.2s;
+}
+.captcha-input:focus { border-color: var(--morsoblue); }
+body.dark .captcha-input { background: #2a2a2a; color: #f0f0f0; border-color: #444; }
+
+.order-send-btn {
+  width: 100%;
+  padding: 13px;
+  background: #25D366;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--brand-font);
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s;
+  margin-top: 4px;
+}
+.order-send-btn:hover { background: #1da851; }
+
+.order-clear-btn {
+  width: 100%;
+  padding: 10px;
+  background: none;
+  color: var(--grey);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  font-family: var(--brand-font);
+  font-size: 0.82rem;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: border-color 0.15s;
+}
+.order-clear-btn:hover { border-color: #e74c3c; color: #e74c3c; }
+
+.order-error {
+  color: #e74c3c;
+  font-size: 0.78rem;
+  margin-bottom: 8px;
+  display: none;
+  text-align: center;
+}
+
+/* ── REVIEW BUTTONS ── */
+.review-section {
+  max-width: 650px;
+  margin: 32px auto 0;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.review-section h3 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  color: var(--grey);
+  margin-bottom: 6px;
+}
+
+.review-section p {
+  font-size: 0.82rem;
+  color: var(--grey);
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.review-btns {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-family: var(--brand-font);
+  font-size: 0.82rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border: 1.5px solid var(--border);
+  color: var(--dark);
+  background: var(--white);
+}
+.review-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 14px rgba(0,0,0,0.12); }
+body.dark .review-btn { background: #2a2a2a; border-color: #444; color: #f0f0f0; }
+
+.review-btn-google  { border-color: #ea4335; }
+.review-btn-zomato  { border-color: #e23744; }
+.review-btn-ta      { border-color: #34e0a1; }
+
 /* ── MAP ── */
 .map-wrap {
   max-width: 610px;
@@ -855,36 +1153,36 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Eggs &amp; More <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Sunny Side Up" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Sunny Side Up</span></span><span class="item-price">₹159</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Sunny Side Up</span></span><span class="item-price">₹159</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Golden yolks with tender whites, cooked gently. Best enjoyed with toast and slow mornings.</span>
   </div>
   <div class="menu-item" data-name="French Omelette" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">French Omelette</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">French Omelette</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fluffy, folded omelette with herbs and a light finish. Elegant yet comforting.</span>
     <div class="upgrades">Upgrades: Guac (60g) ₹139 · Cheese (20g) ₹29</div>
   </div>
   <div class="menu-item" data-name="Scrambled Eggs" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Scrambled Eggs</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Scrambled Eggs</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft, buttery scrambled eggs cooked just right. Simple, comforting and perfect to start your day.</span>
     <div class="upgrades">Upgrades: Guac (60g) ₹139 · Cheese (20g) ₹29</div>
   </div>
   <div class="menu-item" data-name="Masala Omelette" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Masala Omelette</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Masala Omelette</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">A familiar favourite with onions, chillies and spices. Warm, flavourful and satisfying.</span>
     <div class="upgrades">Upgrades: Guac ₹139 · Cheese ₹29 · Chicken</div>
   </div>
   <div class="menu-item" data-name="Paneer Akuri">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Akuri</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Akuri</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crumbled paneer tossed with onions, tomatoes and mild spices. A hearty, homely take on the classic akuri.</span>
     <div class="upgrades">Upgrades: Guac ₹139 · Cheese ₹29</div>
   </div>
   <div class="menu-item" data-name="Mexican Eggs" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Mexican Eggs</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Mexican Eggs</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Eggs cooked with peppers, beans and bold spices. A lively plate with just the right kick.</span>
     <div class="upgrades">Upgrades: Guac ₹139 · Cheese ₹29</div>
   </div>
   <div class="menu-item" data-name="Avocado Egg Omelette" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Avocado Egg Omelette</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Avocado Egg Omelette</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy avocado folded into soft eggs. Light, wholesome and filling.</span>
     <div class="upgrades">Upgrades: Guac ₹139 · Cheese ₹29</div>
   </div>
@@ -895,31 +1193,31 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Croissants <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Butter Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Butter Croissant</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Butter Croissant</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Light, flaky and baked golden. Simple pleasure with your morning coffee.</span>
   </div>
   <div class="menu-item" data-name="Chocolate Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Croissant</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Croissant</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Buttery layers wrapped around melted chocolate. Warm, soft and comforting.</span>
   </div>
   <div class="menu-item" data-name="Almond Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Almond Croissant</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Almond Croissant</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Flaky croissant filled with almond cream and a gentle crunch. Subtle and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Nutella Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Croissant</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Croissant</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp layers filled with smooth Nutella. Sweet, nostalgic and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Scrambled Egg Cheese Croissant" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Scrambled Egg &amp; Cheese Croissant</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Scrambled Egg &amp; Cheese Croissant</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft scrambled eggs and melted cheese tucked into a warm croissant. A wholesome breakfast favourite.</span>
   </div>
   <div class="menu-item" data-name="Mushroom Cheese Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom &amp; Cheese Croissant</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom &amp; Cheese Croissant</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Sautéed mushrooms with melted cheese in flaky layers. Savoury and comforting.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Grilled Chicken Croissant">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Croissant</span></span><span class="item-price">₹299</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Croissant</span></span><span class="item-price">₹299</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender grilled chicken in a warm croissant. Hearty yet light.</span>
     <div class="upgrades">Upgrades: Cheese (20g) ₹29</div>
   </div>
@@ -930,27 +1228,27 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Sweet Brioche Toasts <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Honey Butter Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Honey Butter Toast</span></span><span class="item-price">₹159</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Honey Butter Toast</span></span><span class="item-price">₹159</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Warm brioche with melting butter and a drizzle of honey. Simple and nostalgic.</span>
   </div>
   <div class="menu-item" data-name="French Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">French Toast</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">French Toast</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Golden brioche dipped and griddled till soft inside. A café classic done right.</span>
   </div>
   <div class="menu-item" data-name="Creme Brulee Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Crème Brûlée Toast</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Crème Brûlée Toast</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Caramelised sugar crust over soft brioche. Crisp on top, tender beneath.</span>
   </div>
   <div class="menu-item" data-name="Strawberry French Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry French Toast</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry French Toast</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Classic French toast topped with sweet strawberries. Light and cheerful.</span>
   </div>
   <div class="menu-item" data-name="Nutella Banana Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Banana Toast</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Banana Toast</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft brioche topped with Nutella and fresh banana. Sweet, warm and comforting.</span>
   </div>
   <div class="menu-item" data-name="Tiramisu Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tiramisu Toast</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tiramisu Toast</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Coffee-soaked brioche with creamy topping and cocoa dusting. Gentle indulgence.</span>
   </div>
 </div>
@@ -960,27 +1258,27 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Sourdough Open Toasts <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Grilled Paneer Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Grilled Paneer Toast</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Grilled Paneer Toast</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Grilled paneer with fresh toppings on crisp sourdough. Hearty and wholesome.</span>
   </div>
   <div class="menu-item" data-name="Mushroom Cheese Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Cheese Toast</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Cheese Toast</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Sautéed mushrooms and melted cheese on warm sourdough. Savoury and comforting.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Chicken Cheese Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Cheese Toast</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Cheese Toast</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender chicken on sourdough. Simple and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Avocado Egg Toast" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Avocado Egg Toast</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Avocado Egg Toast</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy avocado and eggs on toasted sourdough. Fresh, balanced and filling.</span>
   </div>
   <div class="menu-item" data-name="Avocado and Feta">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Avocado &amp; Feta</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Avocado &amp; Feta</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Avocado with crumbled feta on sourdough. Creamy with a gentle tang.</span>
   </div>
   <div class="menu-item" data-name="Guac Toast">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Guac Toast</span></span><span class="item-price">₹299</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Guac Toast</span></span><span class="item-price">₹299</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Chunky guacamole on crisp sourdough. Bright, fresh and satisfying.</span>
   </div>
 </div>
@@ -990,27 +1288,27 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Grilled Panini Sandwiches <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="The Bombay Panini">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">The Bombay Panini</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">The Bombay Panini</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">A nod to classic Bombay flavours, toasted crisp and served warm. Familiar and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Veg Panini">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Panini</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Panini</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh vegetables and cheese pressed till golden. Simple and filling.</span>
   </div>
   <div class="menu-item" data-name="Cheese Panini">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheese Panini</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheese Panini</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Melted cheese between crisp grilled bread. Comfort in every bite.</span>
   </div>
   <div class="menu-item" data-name="Pesto Paneer Panini">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pesto Paneer Panini</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pesto Paneer Panini</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Grilled paneer with herby pesto, toasted to perfection. Fresh and flavourful.</span>
   </div>
   <div class="menu-item" data-name="Mushroom Melt">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Melt</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Melt</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Juicy mushrooms with melted cheese in a crisp press. Savoury and rich.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Grilled Chicken Panini">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender grilled chicken, pressed warm and golden. A dependable favourite.</span>
   </div>
 </div>
@@ -1020,17 +1318,17 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Salads <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Tangy Asian Salad">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tangy Asian Salad</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tangy Asian Salad</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh vegetables tossed in a light, tangy dressing with a gentle crunch. Bright and refreshing.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Paneer (100g) ₹79</div>
   </div>
   <div class="menu-item" data-name="Classic Caesar Salad">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Caesar Salad</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Caesar Salad</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp greens with creamy dressing, parmesan and crunch. A timeless café classic.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Paneer (100g) ₹79</div>
   </div>
   <div class="menu-item" data-name="Paneer Power Salad">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Power Salad</span></span><span class="item-price">₹289</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Power Salad</span></span><span class="item-price">₹289</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Grilled paneer with fresh greens and wholesome add-ins. A hearty, protein-packed bowl.</span>
   </div>
 </div>
@@ -1040,53 +1338,53 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Morsels <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Classic Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Fries</span></span><span class="item-price">₹129</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Fries</span></span><span class="item-price">₹129</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Golden, crisp fries with a soft centre. Lightly salted and always comforting.</span>
   </div>
   <div class="menu-item" data-name="Peri Peri Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">House Fav Peri Peri Fries <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">House Fav Peri Peri Fries <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp fries tossed in our peri peri spice. Warm heat with everyday comfort.</span>
   </div>
   <div class="menu-item" data-name="Chilli Garlic Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chilli Garlic Fries</span></span><span class="item-price">₹159</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chilli Garlic Fries</span></span><span class="item-price">₹159</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fries tossed in chilli and garlic. Bold, aromatic and hard to stop at one bite.</span>
   </div>
   <div class="menu-item" data-name="Sourdough Garlic Bread">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Sourdough Garlic Bread</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Sourdough Garlic Bread</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Warm sourdough brushed with garlic butter. Simple, fragrant and comforting.</span>
     <div class="upgrades">Upgrades: Cheese ₹29</div>
   </div>
   <div class="menu-item" data-name="Cheesy Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheesy Fries</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheesy Fries</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp fries topped with warm, melted cheese. Simple and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Wasabi Mayo Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Wasabi Mayo Fries</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Wasabi Mayo Fries</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp fries served with a creamy wasabi mayo. Mild heat with a smooth finish.</span>
   </div>
   <div class="menu-item" data-name="The Nachos Salsa">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">The Nachos &amp; Salsa</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">The Nachos &amp; Salsa</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp nachos served with fresh salsa. Easy, familiar and perfect with coffee or coolers.</span>
     <div class="upgrades">Upgrades: Grilled Chicken ₹89 · Cheese ₹29 · Guac ₹139</div>
   </div>
   <div class="menu-item" data-name="Korean Cheese Fries">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Korean Cheese Fries</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Korean Cheese Fries</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fries layered with Korean style seasoning and cheese. Savoury with a gentle kick.</span>
   </div>
   <div class="menu-item" data-name="Japanese Pakora">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Japanese Pakora</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Japanese Pakora</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Light, crisp fritters with a subtle Asian twist. Crunchy and addictive.</span>
   </div>
   <div class="menu-item" data-name="Paneer Green Thecha Cutlets">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Green Thecha Cutlets</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Green Thecha Cutlets</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp cutlets with a bold green thecha kick. Spicy, satisfying and perfect to share.</span>
   </div>
   <div class="menu-item" data-name="Paneer Popcorn">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Popcorn</span></span><span class="item-price">₹289</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Popcorn</span></span><span class="item-price">₹289</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Bite-sized crispy paneer pieces with a gentle spice. Fun and flavourful.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Crispy Chicken Tenders">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Crispy Chicken Tenders <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹299</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Crispy Chicken Tenders <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹299</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Golden fried chicken strips, juicy inside and crisp outside. Crowd favourite.</span>
   </div>
 </div>
@@ -1096,19 +1394,19 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Pancakes <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Classic Pancake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Pancake</span></span><span class="item-price">₹159</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Pancake</span></span><span class="item-price">₹159</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft, fluffy pancakes served warm. A comforting café staple.</span>
   </div>
   <div class="menu-item" data-name="Chocolate Pancake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Pancake</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Pancake</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fluffy pancakes with rich chocolate notes. Sweet and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Blueberry Pancake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Blueberry Pancake</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Blueberry Pancake</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Light pancakes dotted with blueberries. Soft, fruity and balanced.</span>
   </div>
   <div class="menu-item" data-name="Nutella Pancake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Pancake</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Nutella Pancake</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Warm pancakes layered with smooth Nutella. A simple crowd favourite.</span>
   </div>
 </div>
@@ -1118,22 +1416,22 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Burgers <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Classic Veg Burger">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Veg Burger</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Veg Burger</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">A hearty veg patty with fresh toppings in a soft bun. Familiar and filling.</span>
     <div class="upgrades">Upgrades: Cheese ₹29</div>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Grilled Chicken Burger">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Burger</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Burger</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender grilled chicken with fresh greens in a toasted bun. Simple and satisfying.</span>
     <div class="upgrades">Upgrades: Cheese ₹29</div>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Crispy Chicken Burger">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Crispy Chicken Burger</span></span><span class="item-price">₹319</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Crispy Chicken Burger</span></span><span class="item-price">₹319</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Crisp fried chicken in a soft bun with fresh toppings. Crunchy outside, tender inside.</span>
     <div class="upgrades">Upgrades: Cheese ₹29</div>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Double Cheese Smash Chicken Burger">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Double Cheese Smash Chicken Burger <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹349</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Double Cheese Smash Chicken Burger <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹349</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Two juicy smashed chicken patties with generous melted cheese. Big, bold and indulgent.</span>
   </div>
 </div>
@@ -1143,31 +1441,31 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Pizza <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Margherita">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Margherita</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Margherita</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tomato sauce and mozzarella on a thin, crisp base finished with basil. Simple and timeless.</span>
   </div>
   <div class="menu-item" data-name="Spicy Corn Jalapeno Pizza">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spicy Corn &amp; Jalapeño Pizza</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spicy Corn &amp; Jalapeño Pizza</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Sweet corn and jalapeños over melted cheese. Mild heat with comforting flavours.</span>
   </div>
   <div class="menu-item" data-name="Farm Veg Pizza">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Farm Veg Pizza</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Farm Veg Pizza</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Loaded with fresh vegetables and cheese on a crisp base. Wholesome and hearty.</span>
   </div>
   <div class="menu-item" data-name="Spicy Paneer Pizza">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spicy Paneer Pizza</span></span><span class="item-price">₹299</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spicy Paneer Pizza</span></span><span class="item-price">₹299</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Spiced paneer with peppers and cheese. Warm flavours with a gentle kick.</span>
   </div>
   <div class="menu-item" data-name="White Pizza Mushroom Garlic">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">White Pizza (Mushroom &amp; Garlic) <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹299</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">White Pizza (Mushroom &amp; Garlic) <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹299</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy white base topped with mushrooms and garlic. Rich, savoury and balanced.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Grilled Chicken Pizza">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Pizza</span></span><span class="item-price">₹349</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken Pizza</span></span><span class="item-price">₹349</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender grilled chicken on a thin, crisp base with fresh toppings. Comforting and hearty.</span>
   </div>
   <div class="menu-item" data-name="Half n Half">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Half n Half</span></span><span class="item-price">₹349</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Half n Half</span></span><span class="item-price">₹349</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Choose two flavours on one crisp base. Perfect for sharing or when you cannot decide.</span>
   </div>
 </div>
@@ -1177,15 +1475,15 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Pocket Pizza <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Grilled Veg Pocket">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Grilled Veg</span></span><span class="item-price">₹129</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Grilled Veg</span></span><span class="item-price">₹129</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh vegetables and cheese folded into a warm, crisp pocket. Easy and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Mushroom Pocket">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Savoury mushrooms with melted cheese in a handheld pocket. Simple and comforting.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Grilled Chicken Pocket">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Grilled Chicken</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender grilled chicken wrapped in a warm pocket. A quick, wholesome bite.</span>
   </div>
 </div>
@@ -1195,7 +1493,7 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Grab n Go Pocket Pizza <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Paneer Grab n Go">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Spiced paneer with cheese tucked into a crisp pocket. Hearty and filling.</span>
   </div>
 </div>
@@ -1205,27 +1503,27 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Pasta <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Spaghetti Aglio e Olio">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spaghetti Aglio-e-Olio</span></span><span class="item-price">₹219</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spaghetti Aglio-e-Olio</span></span><span class="item-price">₹219</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Spaghetti tossed with olive oil and garlic. Aromatic, simple and beautifully balanced.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Mushroom (100g) ₹59</div>
   </div>
   <div class="menu-item" data-name="Penne Arrabiatta">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Arrabiatta</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Arrabiatta</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Penne in a garlic and chilli tomato sauce. Light heat with comforting depth.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Mushroom (100g) ₹59</div>
   </div>
   <div class="menu-item" data-name="Penne Cheese">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Cheese</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Cheese</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Penne folded into a creamy cheese sauce. Warm, rich and satisfying.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Mushroom (100g) ₹59</div>
   </div>
   <div class="menu-item" data-name="Penne Pink Sauce">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Pink Sauce</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Penne Pink Sauce</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Penne in a tomato and cream sauce. Balanced, comforting and easy to love.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Mushroom (100g) ₹59</div>
   </div>
   <div class="menu-item" data-name="Spaghetti Chilli Cream Pasta">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spaghetti Chilli Cream Pasta</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spaghetti Chilli Cream Pasta</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Spaghetti in a smooth chilli cream sauce. Creamy with a gentle warmth.</span>
     <div class="upgrades">Upgrades: Grilled Chicken (70g) ₹89 · Mushroom (100g) ₹59</div>
   </div>
@@ -1236,19 +1534,19 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Smoothie Bowls <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Mixed Berry Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mixed Berry Bowl</span></span><span class="item-price">₹259</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mixed Berry Bowl</span></span><span class="item-price">₹259</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy berry smoothie bowl topped with fresh fruits and crunch. Bright and wholesome.</span>
   </div>
   <div class="menu-item" data-name="Strawberry Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Bowl</span></span><span class="item-price">₹259</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Bowl</span></span><span class="item-price">₹259</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Smooth strawberry base with fresh toppings. Light, fruity and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Blueberry Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Blueberry Bowl</span></span><span class="item-price">₹259</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Blueberry Bowl</span></span><span class="item-price">₹259</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Blueberry smoothie bowl layered with fresh textures. Balanced and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Avocado Honey Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Avocado Honey Bowl</span></span><span class="item-price">₹349</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Avocado Honey Bowl</span></span><span class="item-price">₹349</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy avocado blended with honey. Smooth, rich and naturally sweet.</span>
   </div>
 </div>
@@ -1258,39 +1556,39 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Morso Bowls <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Home-Style Dal Tadka Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Home-Style Dal Tadka Bowl</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Home-Style Dal Tadka Bowl</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Simple dal tadka served warm over rice. Honest, homely comfort in a bowl.</span>
   </div>
   <div class="menu-item" data-name="Delhi-Style Rajma Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Delhi-Style Rajma Bowl</span></span><span class="item-price">₹159</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Delhi-Style Rajma Bowl</span></span><span class="item-price">₹159</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Slow cooked rajma with rice, inspired by Delhi flavours. Simple and soulful.</span>
   </div>
   <div class="menu-item" data-name="Masala Egg Curry Bowl" data-diet="egg">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Masala Egg Curry Bowl</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon egg"></span><span class="item-name">Masala Egg Curry Bowl</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Eggs simmered in a spiced curry with rice. Warm, hearty and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Creamy Makhani Paneer Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Creamy Makhani Paneer Bowl</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Creamy Makhani Paneer Bowl</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft paneer in a rich makhani gravy with rice. Familiar and deeply comforting.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Butter Chicken Bliss Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Butter Chicken Bliss Bowl <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Butter Chicken Bliss Bowl <span class="chefs-pick">★ Pick</span></span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender chicken in a creamy tomato gravy with rice. A classic done right.</span>
   </div>
   <div class="menu-item" data-name="Veg Asian Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Asian Bowl</span></span><span class="item-price">₹219</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Asian Bowl</span></span><span class="item-price">₹219</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh vegetables, rice and Asian style flavours in one balanced bowl. Light, wholesome and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Mushroom Asian Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Asian Bowl</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mushroom Asian Bowl</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Sautéed mushrooms with rice and Asian seasonings. Savoury, warm and comforting.</span>
   </div>
   <div class="menu-item" data-name="Paneer Asian Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Asian Bowl</span></span><span class="item-price">₹269</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Paneer Asian Bowl</span></span><span class="item-price">₹269</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Grilled paneer with rice and bold Asian flavours. Hearty and flavourful.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Chicken Asian Bowl">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Asian Bowl</span></span><span class="item-price">₹279</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Asian Bowl</span></span><span class="item-price">₹279</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender chicken with rice and fresh vegetables. A wholesome, balanced meal.</span>
   </div>
 </div>
@@ -1300,15 +1598,15 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Proper Meal <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Veg Pomodoro Crema">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Pomodoro Crema</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Veg Pomodoro Crema</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Vegetables in a light tomato cream sauce served as a complete meal. Comforting and balanced.</span>
   </div>
   <div class="menu-item" data-name="Pesto Paneer">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pesto Paneer</span></span><span class="item-price">₹329</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pesto Paneer</span></span><span class="item-price">₹329</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Grilled paneer tossed in fresh pesto. Fresh, herby and satisfying.</span>
   </div>
   <div class="menu-item" data-diet="nonveg" data-name="Chicken Pepenero">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Pepenero</span></span><span class="item-price">₹349</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon nonveg"></span><span class="item-name">Chicken Pepenero</span></span><span class="item-price">₹349</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Tender chicken in a peppery sauce. Warm, hearty and full of flavour.</span>
   </div>
 </div>
@@ -1318,15 +1616,15 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Dessert <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Cinnamon Roll">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cinnamon Roll</span></span><span class="item-price">₹169</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cinnamon Roll</span></span><span class="item-price">₹169</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Soft roll layered with cinnamon sugar and baked till golden. Warm and comforting.</span>
   </div>
   <div class="menu-item" data-name="Brownie with Ice-Cream">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Brownie with Ice-Cream &amp; Choc Sauce</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Brownie with Ice-Cream &amp; Choc Sauce</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Warm chocolate brownie topped with ice cream and rich sauce. Classic café indulgence.</span>
   </div>
   <div class="menu-item" data-name="Cheesecake Slice">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheesecake Slice</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cheesecake Slice</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy baked cheesecake, flavour of the day. Smooth, light and satisfying.</span>
   </div>
 </div>
@@ -1339,71 +1637,71 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <div class="content">
   <div class="origin-note">We brew with beans from Baarbara Estate, Babudangiri hills of Karnataka — single origin 100% Arabica, medium dark roast with notes of citrus, dark chocolate, red berries and caramel.</div>
   <div class="menu-item" data-name="Babycinno">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Babycinno</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Babycinno</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Steamed milk with light foam and a hint of chocolate. Gentle and cosy.</span>
   </div>
   <div class="menu-item" data-name="Espresso Shot">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso Shot</span></span><span class="item-price">₹89</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso Shot</span></span><span class="item-price">₹89</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Short pulled espresso with a rich crema and bold finish.</span>
   </div>
   <div class="menu-item" data-name="Doppio">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Doppio</span></span><span class="item-price">₹129</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Doppio</span></span><span class="item-price">₹129</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Double shot of espresso. Strong, smooth and full bodied.</span>
   </div>
   <div class="menu-item" data-name="Americano">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Americano</span></span><span class="item-price">₹139</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Americano</span></span><span class="item-price">₹139</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso topped with hot water. Clean, balanced and easy to sip.</span>
   </div>
   <div class="menu-item" data-name="Tall Black">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tall Black</span></span><span class="item-price">₹139</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tall Black</span></span><span class="item-price">₹139</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Hot water crowned with fresh espresso. Bold yet smooth.</span>
   </div>
   <div class="menu-item" data-name="Cortado">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cortado</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cortado</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso balanced with equal warm milk. Intense and smooth.</span>
   </div>
   <div class="menu-item" data-name="Cappuccino">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cappuccino</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cappuccino</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso with steamed milk and foam. Creamy and comforting.</span>
   </div>
   <div class="menu-item" data-name="Flat White">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Flat White</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Flat White</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso with velvety microfoam. Rich and well rounded.</span>
   </div>
   <div class="menu-item" data-name="Spanish Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spanish Latte</span></span><span class="item-price">₹179</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Spanish Latte</span></span><span class="item-price">₹179</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso blended with condensed milk and steamed milk. Gently sweet and smooth.</span>
   </div>
   <div class="menu-item" data-name="Vienna">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vienna</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vienna</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Hot espresso crowned with whipped cream. Rich and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Irish Coffee">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Irish Coffee</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Irish Coffee</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso with Irish cream flavour and a smooth finish. Warm and comforting.</span>
   </div>
   <div class="menu-item" data-name="Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Latte</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Latte</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso blended with silky steamed milk. Simple and dependable.</span>
   </div>
   <div class="menu-item" data-name="Hot Chocolate">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Hot Chocolate</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Hot Chocolate</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Melted chocolate blended with milk. Rich, warm and comforting.</span>
   </div>
   <div class="menu-item" data-name="Mocha">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mocha</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mocha</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso with dark chocolate and milk. Smooth and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Matcha Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Matcha Latte</span></span><span class="item-price">₹209</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Matcha Latte</span></span><span class="item-price">₹209</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Smooth matcha whisked with milk. Earthy, balanced and calming.</span>
   </div>
   <div class="menu-item" data-name="Bombon">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Bombon</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Bombon</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso layered over condensed milk. Sweet, strong and striking.</span>
   </div>
   <div class="menu-item" data-name="Caramel Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Caramel Latte</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Caramel Latte</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy milk coffee with buttery caramel notes. Smooth and familiar.</span>
   </div>
   <div class="upgrades" style="padding: 8px 10px;">Flavour Upgrades for any hot coffee: Irish · Vanilla · Hazelnut · Caramel — ₹39</div>
@@ -1414,23 +1712,23 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Chai Brew <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Masala Chai">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Masala Chai</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Masala Chai</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Black tea brewed with milk and whole spices. Aromatic and warming.</span>
   </div>
   <div class="menu-item" data-name="Lemon Grass Ginger Tea">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Lemon Grass Ginger Tea</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Lemon Grass Ginger Tea</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Lemongrass and ginger infusion. Bright, fragrant and naturally warming.</span>
   </div>
   <div class="menu-item" data-name="Pure Green Tea">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pure Green Tea</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Pure Green Tea</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Whole green leaves steeped gently. Clean and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Hibiscus Tea">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Hibiscus Tea</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Hibiscus Tea</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Ruby red infusion with a bright, tangy finish. Light and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Chamomile Tea">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chamomile Tea</span></span><span class="item-price">₹79</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chamomile Tea</span></span><span class="item-price">₹79</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Gentle floral tea with calming notes. Soft and soothing.</span>
   </div>
 </div>
@@ -1441,87 +1739,87 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <div class="content">
   <div class="origin-note">We brew with beans from Baarbara Estate, Babudangiri hills of Karnataka — single origin 100% Arabica, medium dark roast with notes of citrus, dark chocolate, red berries and caramel.</div>
   <div class="menu-item" data-name="Iced Americano">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Americano</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Americano</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso over ice with chilled water. Crisp and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Cold Brew">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cold Brew</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cold Brew</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Slow steeped for 24 hours. Smooth, low acid and easy to drink.</span>
   </div>
   <div class="menu-item" data-name="Dirty Coffee">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Dirty Coffee</span></span><span class="item-price">₹189</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Dirty Coffee</span></span><span class="item-price">₹189</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Cold milk layered with fresh espresso. Aromatic and beautifully layered.</span>
   </div>
   <div class="menu-item" data-name="Classic Cold Coffee">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Cold Coffee <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Classic Cold Coffee <span class="chefs-pick">★ Fav</span></span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso blended with ice cream. Thick, nostalgic and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Iced Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Latte</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Latte</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso and chilled milk over ice. Clean and comforting.</span>
   </div>
   <div class="menu-item" data-name="Iced Matcha Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Matcha Latte</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Iced Matcha Latte</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Chilled matcha blended with milk. Light and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Salted Caramel Iced Matcha Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Salted Caramel Iced Matcha Latte</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Salted Caramel Iced Matcha Latte</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Matcha with milk and salted caramel. Sweet with a gentle savoury note.</span>
   </div>
   <div class="menu-item" data-name="Strawberry Iced Matcha Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Iced Matcha Latte</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Iced Matcha Latte</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Iced matcha topped with strawberry cream. Fresh and playful.</span>
   </div>
   <div class="menu-item" data-name="Cloud Matcha">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cloud Matcha</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cloud Matcha</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Creamy matcha foam over coconut water. Light, smooth and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Matcha Thai Latte">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Matcha Thai Latte</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Matcha Thai Latte</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Matcha whisked with condensed milk and warm spice notes. Creamy and comforting.</span>
   </div>
   <div class="menu-item" data-name="Espresso-Cran">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso-Cran</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso-Cran</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso with cranberry fizz and citrus notes. Tangy and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Affogato">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Affogato</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Affogato</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Hot espresso poured over vanilla ice cream. Warm meets cold beautifully.</span>
   </div>
   <div class="menu-item" data-name="Espresso Tonic">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso Tonic</span></span><span class="item-price">₹219</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Espresso Tonic</span></span><span class="item-price">₹219</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Espresso over tonic with citrus notes. Bright and lively.</span>
   </div>
   <div class="menu-item" data-name="Mont Blanc">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mont Blanc</span></span><span class="item-price">₹219</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mont Blanc</span></span><span class="item-price">₹219</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Iced espresso with orange, brown sugar and cream. Smooth with a citrus lift.</span>
   </div>
   <div class="menu-item" data-name="Cold Brew with Milk">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cold Brew with Milk</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Cold Brew with Milk</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Smooth cold brew finished with chilled milk. Balanced and mellow.</span>
   </div>
   <div class="menu-item" data-name="Korean Espresso">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Korean Espresso</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Korean Espresso</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Iced espresso topped with soft cream foam. Smooth and lightly sweet.</span>
   </div>
   <div class="menu-item" data-name="Tiramisu Iced Espresso">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tiramisu Iced Espresso</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tiramisu Iced Espresso</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Iced espresso layered with creamy topping and cocoa. Dessert in a glass.</span>
   </div>
   <div class="menu-item" data-name="Vietnamese">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vietnamese</span></span><span class="item-price">₹229</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vietnamese</span></span><span class="item-price">₹229</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Strong iced coffee with condensed milk. Bold, sweet and satisfying.</span>
   </div>
   <div class="menu-item" data-name="Vanilla Cream Cold Brew">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vanilla Cream Cold Brew</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vanilla Cream Cold Brew</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Cold brew topped with light vanilla cream. Smooth with a gentle sweetness.</span>
   </div>
   <div class="menu-item" data-name="Caramel Cream Cold Brew">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Caramel Cream Cold Brew</span></span><span class="item-price">₹239</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Caramel Cream Cold Brew</span></span><span class="item-price">₹239</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Chilled brew finished with silky caramel cream. Rich yet refreshing.</span>
   </div>
   <div class="menu-item" data-name="Yuzu Iced Americano">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Yuzu Iced Americano</span></span><span class="item-price">₹249</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Yuzu Iced Americano</span></span><span class="item-price">₹249</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Cold espresso with bright yuzu citrus. Fresh and vibrant.</span>
   </div>
 </div>
@@ -1531,19 +1829,19 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Shake Bar <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Vanilla Shake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vanilla Shake</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Vanilla Shake</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Thick, creamy vanilla milkshake. Smooth and comforting.</span>
   </div>
   <div class="menu-item" data-name="Chocolate Shake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Shake</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Chocolate Shake</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Rich chocolate blended into a thick, chilled shake. Classic and indulgent.</span>
   </div>
   <div class="menu-item" data-name="Strawberry Milkshake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Milkshake</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Strawberry Milkshake</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh strawberry flavour in a creamy shake. Sweet and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Protein Shake">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Protein Shake (1 scoop) — 26g Unflavoured</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Protein Shake (1 scoop) — 26g Unflavoured</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">26g protein blended smooth. Clean, simple and nourishing.</span>
     <div class="upgrades">Upgrades: Any Flavour (Irish, Vanilla, Hazelnut, Caramel) ₹39 · Espresso shot</div>
   </div>
@@ -1554,23 +1852,23 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Super Coolers <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="House Lemonade">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">House Lemonade</span></span><span class="item-price">₹139</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">House Lemonade</span></span><span class="item-price">₹139</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Fresh lemon with soda. Clean, zesty and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Peach Iced Tea">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Peach Iced Tea</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Peach Iced Tea</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Slow brewed tea infused with ripe peach. Smooth and lightly sweet.</span>
   </div>
   <div class="menu-item" data-name="Italian Orange Cooler">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Italian Orange Cooler</span></span><span class="item-price">₹149</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Italian Orange Cooler</span></span><span class="item-price">₹149</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Orange juice with basil and tonic. Bright and lightly citrusy.</span>
   </div>
   <div class="menu-item" data-name="Yuzu Citrus Cooler">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Yuzu Citrus Cooler</span></span><span class="item-price">₹199</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Yuzu Citrus Cooler</span></span><span class="item-price">₹199</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Yuzu blended with soda and fresh citrus. Crisp and refreshing.</span>
   </div>
   <div class="menu-item" data-name="Packed Juice">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Packed Juice</span></span><span class="item-price">₹99</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Packed Juice</span></span><span class="item-price">₹99</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
     <span class="item-desc">Chilled bottled juice for a quick, easy refresh.</span>
   </div>
 </div>
@@ -1580,23 +1878,43 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
 <button class="section-title">Bottled Beverages <span class="chevron">▼</span></button>
 <div class="content">
   <div class="menu-item" data-name="Mineral Water">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mineral Water</span></span><span class="item-price">₹20</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Mineral Water</span></span><span class="item-price">₹20</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
   </div>
   <div class="menu-item" data-name="Diet Coke">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Diet Coke</span></span><span class="item-price">₹59</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Diet Coke</span></span><span class="item-price">₹59</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
   </div>
   <div class="menu-item" data-name="Coke">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Coke</span></span><span class="item-price">₹59</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Coke</span></span><span class="item-price">₹59</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
   </div>
   <div class="menu-item" data-name="Tonic Water">
-    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tonic Water</span></span><span class="item-price">₹69</span></div>
+    <div class="item-row"><span class="item-name-wrap"><span class="diet-icon veg"></span><span class="item-name">Tonic Water</span></span><span class="item-price">₹69</span><div class="cart-controls"><button class="cart-btn minus" aria-label="Remove one">−</button><span class="cart-qty">0</span><button class="cart-btn plus" aria-label="Add one">+</button></div></div>
   </div>
 </div>
 </div>
 
 </div><!-- end accordion -->
 
-<!-- REVIEWS -->
+<!-- REVIEW BUTTONS -->
+<div class="review-section">
+  <h3>Enjoyed your visit?</h3>
+  <p>A review means the world to a small café. Takes 30 seconds and helps others find us.</p>
+  <div class="review-btns">
+    <a class="review-btn review-btn-google" href="https://g.page/r/YOURGOOGLREVIEWLINK/review" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path fill="#ea4335" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z"/></svg>
+      Google
+    </a>
+    <a class="review-btn review-btn-zomato" href="https://www.zomato.com/pune/morso-balewadi" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#e23744"/><path fill="#fff" d="M8 8h8v2H8zm0 3h8v2H8zm0 3h5v2H8z"/></svg>
+      Zomato
+    </a>
+    <a class="review-btn review-btn-ta" href="https://www.tripadvisor.in/Restaurant_Review-YOURTRIPADVISORLINK" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#34e0a1"/><circle cx="9" cy="12" r="2" fill="#fff"/><circle cx="15" cy="12" r="2" fill="#fff"/></svg>
+      Tripadvisor
+    </a>
+  </div>
+</div>
+
+<!-- REVIEWS CAROUSEL -->
 <div class="reviews-section">
   <h3>What People Say</h3>
   <div class="review-card">
@@ -1670,7 +1988,43 @@ body.dark .signup-input { background: #2a2a2a; color: #f0f0f0; border-color: #44
   <a id="whatsappBtn" class="fab" href="https://wa.me/918766917162" target="_blank" title="WhatsApp us" aria-label="WhatsApp">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
+  <button id="cartFab" title="View your order" aria-label="View order cart">
+    🛒 <span class="cart-badge" id="cartBadge">0</span>
+  </button>
   <button id="backToTop" class="fab" title="Back to top" aria-label="Back to top">↑</button>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true" aria-label="Your order">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">🧾 Your Order</div>
+
+    <div class="order-items" id="orderItemsList"></div>
+
+    <div class="order-error" id="orderError"></div>
+
+    <label class="order-field-label" for="orderName">Your Name *</label>
+    <input type="text" class="order-field" id="orderName" placeholder="e.g. Priya" autocomplete="given-name">
+
+    <label class="order-field-label" for="orderMobile">Mobile Number * (10 digits)</label>
+    <input type="tel" class="order-field" id="orderMobile" placeholder="9876543210" maxlength="10" autocomplete="tel">
+
+    <label class="order-field-label" for="orderNote">Any special requests? (optional)</label>
+    <input type="text" class="order-field" id="orderNote" placeholder="e.g. Less spice on the pizza">
+
+    <label class="order-field-label" id="captchaLabel"></label>
+    <div class="captcha-row">
+      <span class="captcha-question" id="captchaQuestion"></span>
+      <input type="number" class="captcha-input" id="captchaAnswer" placeholder="?">
+    </div>
+
+    <button class="order-send-btn" id="orderSendBtn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Send Order on WhatsApp
+    </button>
+    <button class="order-clear-btn" id="orderClearBtn">Clear order &amp; start again</button>
+  </div>
 </div>
 
 <script>
@@ -1919,6 +2273,187 @@ signupBtn.addEventListener('click', function () {
 // Allow Enter key on either field
 [signupEmail, signupMobile].forEach(el => {
   el.addEventListener('keydown', e => { if (e.key === 'Enter') signupBtn.click(); });
+});
+
+// ── CART ──
+const MORSO_WA = '918766917162';
+let cart = {}; // { itemName: { qty, price } }
+
+function updateCartControls(itemName, qty) {
+  document.querySelectorAll('.menu-item').forEach(item => {
+    if (item.dataset.name !== itemName) return;
+    const plus  = item.querySelector('.cart-btn.plus');
+    const minus = item.querySelector('.cart-btn.minus');
+    const qtyEl = item.querySelector('.cart-qty');
+    if (!plus || !minus || !qtyEl) return;
+    qtyEl.textContent    = qty;
+    qtyEl.style.display  = qty > 0 ? 'inline' : 'none';
+    minus.style.display  = qty > 0 ? 'flex'   : 'none';
+    plus.style.background= qty > 0 ? 'var(--morsoblue)' : '';
+    plus.style.color     = qty > 0 ? '#fff' : '';
+  });
+}
+
+function updateCartFab() {
+  const total = Object.values(cart).reduce((s, v) => s + v.qty, 0);
+  const fab   = document.getElementById('cartFab');
+  const badge = document.getElementById('cartBadge');
+  badge.textContent = total;
+  fab.classList.toggle('has-items', total > 0);
+}
+
+// +/- buttons via event delegation
+document.getElementById('menuAccordion').addEventListener('click', function(e) {
+  const btn = e.target.closest('.cart-btn');
+  if (!btn || btn.closest('#orderItemsList')) return;
+  const item  = btn.closest('.menu-item');
+  if (!item) return;
+  const name  = item.dataset.name;
+  const price = (item.querySelector('.item-price') || {}).textContent || '';
+  if (!name) return;
+
+  if (!cart[name]) cart[name] = { qty: 0, price };
+  if (btn.classList.contains('plus')) {
+    cart[name].qty++;
+  } else if (btn.classList.contains('minus')) {
+    cart[name].qty = Math.max(0, cart[name].qty - 1);
+    if (cart[name].qty === 0) delete cart[name];
+  }
+  updateCartControls(name, cart[name] ? cart[name].qty : 0);
+  updateCartFab();
+});
+
+// ── ORDER MODAL ──
+const orderModal    = document.getElementById('orderModal');
+const cartFabBtn    = document.getElementById('cartFab');
+const orderSendBtn  = document.getElementById('orderSendBtn');
+const orderClearBtn = document.getElementById('orderClearBtn');
+const orderError    = document.getElementById('orderError');
+let captchaA, captchaB, captchaCorrect;
+
+function newCaptcha() {
+  captchaA       = Math.floor(Math.random() * 9) + 1;
+  captchaB       = Math.floor(Math.random() * 9) + 1;
+  captchaCorrect = captchaA + captchaB;
+  document.getElementById('captchaLabel').textContent    = 'Quick check — just to confirm you\'re human 👋';
+  document.getElementById('captchaQuestion').textContent = `What is ${captchaA} + ${captchaB} =`;
+  document.getElementById('captchaAnswer').value         = '';
+}
+
+function renderOrderItems() {
+  const list  = document.getElementById('orderItemsList');
+  const items = Object.entries(cart);
+  if (items.length === 0) {
+    list.innerHTML = '<p style="text-align:center;color:var(--grey);font-size:0.85rem;padding:12px 0;">Your order is empty.</p>';
+    return;
+  }
+  list.innerHTML = items.map(([name, data]) => `
+    <div class="order-item-row" data-name="${name}">
+      <span class="order-item-name">${name}</span>
+      <div class="order-item-qty-ctrl">
+        <button class="cart-btn minus modal-minus" style="width:22px;height:22px;font-size:1rem;display:flex;">−</button>
+        <span class="order-item-qty">${data.qty}</span>
+        <button class="cart-btn plus modal-plus" style="width:22px;height:22px;font-size:1rem;">+</button>
+        <span style="font-size:0.78rem;color:var(--grey);margin-left:6px;">${data.price}</span>
+      </div>
+    </div>`).join('');
+}
+
+function openModal() {
+  renderOrderItems();
+  newCaptcha();
+  orderError.style.display = 'none';
+  orderModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  orderModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+cartFabBtn.addEventListener('click', openModal);
+orderModal.addEventListener('click', e => { if (e.target === orderModal) closeModal(); });
+
+// Qty controls inside modal
+document.getElementById('orderItemsList').addEventListener('click', function(e) {
+  const btn = e.target.closest('.cart-btn');
+  if (!btn) return;
+  const row  = btn.closest('.order-item-row');
+  if (!row) return;
+  const name = row.dataset.name;
+  if (!cart[name]) return;
+  if (btn.classList.contains('modal-plus')) {
+    cart[name].qty++;
+  } else if (btn.classList.contains('modal-minus')) {
+    cart[name].qty = Math.max(0, cart[name].qty - 1);
+    if (cart[name].qty === 0) {
+      updateCartControls(name, 0);
+      delete cart[name];
+    }
+  }
+  if (cart[name]) updateCartControls(name, cart[name].qty);
+  updateCartFab();
+  renderOrderItems();
+});
+
+// Clear order
+orderClearBtn.addEventListener('click', () => {
+  Object.keys(cart).forEach(n => updateCartControls(n, 0));
+  cart = {};
+  updateCartFab();
+  closeModal();
+});
+
+// ── SEND ORDER ON WHATSAPP ──
+function showOrderError(msg) {
+  orderError.textContent    = msg;
+  orderError.style.display  = 'block';
+  orderError.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+orderSendBtn.addEventListener('click', () => {
+  orderError.style.display = 'none';
+  const name    = document.getElementById('orderName').value.trim();
+  const mobile  = document.getElementById('orderMobile').value.trim();
+  const note    = document.getElementById('orderNote').value.trim();
+  const captcha = parseInt(document.getElementById('captchaAnswer').value.trim(), 10);
+  const items   = Object.entries(cart);
+
+  // Validations
+  if (items.length === 0)
+    return showOrderError('Please add at least one item to your order first.');
+  if (!name)
+    return showOrderError('Please enter your name.');
+  if (!/^\d{10}$/.test(mobile))
+    return showOrderError('Please enter a valid 10-digit Indian mobile number.');
+  if (isNaN(captcha) || captcha !== captchaCorrect)
+    return showOrderError(`Hmm, ${captchaA} + ${captchaB} ≠ ${captcha || '?'}. Please try again.`);
+
+  // Rate limiting — 30 min between orders from same browser
+  const lastOrder = parseInt(localStorage.getItem('morso-last-order') || '0', 10);
+  const now       = Date.now();
+  if (now - lastOrder < 30 * 60 * 1000) {
+    const mins = Math.ceil((30 * 60 * 1000 - (now - lastOrder)) / 60000);
+    return showOrderError(`You placed an order recently. Please wait ${mins} more minute${mins > 1 ? 's' : ''}.`);
+  }
+
+  // Format WhatsApp message
+  const lines   = items.map(([n, d]) => `  • ${d.qty}× ${n} (${d.price})`).join('\n');
+  const noteLine= note ? `\n📝 *Note:* ${note}` : '';
+  const message =
+`🧾 *New Order — Morso*
+──────────────────
+👤 *Name:* ${name}
+📱 *Mobile:* ${mobile}
+──────────────────
+${lines}${noteLine}
+──────────────────
+_Sent via morso.in/menu_`;
+
+  localStorage.setItem('morso-last-order', now.toString());
+  window.open(`https://wa.me/${MORSO_WA}?text=${encodeURIComponent(message)}`, '_blank');
+  closeModal();
 });
 </script>
 </body>
