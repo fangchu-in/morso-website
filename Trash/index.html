@@ -1,0 +1,972 @@
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Morso is a neighbourhood cafe in Balewadi, Pune, offering comfort food, artisanal coffee, and unhurried vibes. Perfect for easy conversations and regular days.">
+<meta name="keywords" content="Cafe in Balewadi, Best Coffee Pune, Morso Pune, Neighbourhood Cafe, Balewadi High Street Food">
+<meta property="og:title" content="Morso | Everyday Food and Coffee">
+<meta property="og:description" content="Comfort, familiarity, and simple food done right in the heart of Balewadi, Pune">
+<meta property="og:image" content="logo.png"> 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Morso",
+  "image": "morso-logo-blue-tp.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "S. No. 33, The Bougain Studio, Unit 4, Ashtavinayak Rd, Balewadi",
+    "addressLocality": "Pune",
+    "addressRegion": "MH",
+    "postalCode": "410045",
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 18.578, 
+    "longitude": 73.770
+  },
+  "telephone": "+918766917162",
+  "url": "https://www.morso.in"
+}
+</script>
+
+    <style>
+/* FONT COMPONENT: Place this at the top of your <style> section */
+/* FONT CONFIGURATION: Regular & SemiBold */
+@font-face {
+    font-family: 'Tw Cen MT Regular';
+    src: url('TwCenMTStd.ttf'); /* Ensure the file name matches exactly */
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Tw Cen MT Regular';
+    src: url('TwCenMTStdSemiBold.ttf'); /* Your semi-bold file */
+    font-weight: bold; /* This links the file to the 'bold' tag */
+    font-style: normal;
+}
+        :root { 
+--brand-font: 'Tw Cen MT Regular', 'Century Gothic', sans-serif;
+            --tan: #d2b48c; 
+            --dark: #2c2c2c; 
+            --white: #f9f9f9; 
+            --grey: #777;
+            --morsoblue: #2057A7;
+            --morsogreen: #A4BB4C;	
+        }
+        
+        body { 
+            font-family: var(--brand-font);
+            background: var(--white); 
+            color: var(--dark); 
+            margin: 0; 
+            padding-bottom: 50px;
+        }
+
+        /* Header Section */
+        header { padding: 5px 2px 3px; text-align: center; background: #fff; }
+
+        .logo { 
+    width: 100%;
+    max-width: 350px; /* Adjust this to your liking */
+    height: auto;
+    margin-bottom: 10px;
+}
+        .tagline { 
+  
+            color: var(--grey); 
+            margin-bottom: 25px; 
+            max-width: 550px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            line-height: 1.5;
+        }
+        
+        .info-bar { 
+            font-size: 0.9rem; 
+            padding: 15px; 
+            border-top: 1px solid #eee; 
+            border-bottom: 1px solid #eee; 
+            margin-bottom: 30px; 
+        }
+        .info-bar a { color: var(--dark); text-decoration: none; font-weight: bold; margin: 0 15px; }
+
+        /* Menu Accordion */
+        .accordion { max-width: 650px; margin: 0 auto; padding: 0 20px; }
+        .section-title { 
+            background: #f1f1f1; 
+            padding: 18px; 
+            width: 100%; 
+            text-align: left; 
+            border: none; 
+            font-size: 1.1rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            border-bottom: 1px solid #ddd; 
+            display: flex; 
+            justify-content: space-between;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .content { display: none; padding: 10px 0 20px; }
+        
+        .menu-item { padding: 15px 10px; border-bottom: 1px solid #f2f2f2; }
+        .item-row { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-name { font-weight: bold; font-size: 1.1rem; }
+        .item-price { font-weight: bold; color: var(--dark); }
+        .item-desc { font-size: 0.85rem; color: var(--grey); margin-top: 5px; display: block; line-height: 1.4; }
+        .upgrades { font-size: 0.75rem; color: #A4BB4C; margin-top: 8px; font-weight: bold; text-transform: uppercase; }
+
+        /* Footer */
+        footer { text-align: center; padding: 10px 10px; font-size: 0.85rem; color: var(--grey); line-height: 1.6; border-top: 1px solid #eee; margin-top: 40px;}
+        .footer-address { margin-bottom: 20px; }
+      
+      /* MOBILE OPTIMIZATION: Ensure touch targets are large enough */
+.section-title {
+    min-height: 60px; /* Easier to tap with a thumb */
+    padding: 20px;
+    font-size: 1.1rem;
+}
+
+.menu-item {
+    padding: 20px 10px; /* More breathing room */
+}
+
+/* RESPONSIVE FONT: Adjusts size based on screen width */
+html {
+    font-size: 16px;
+}
+@media (max-width: 480px) {
+    html { font-size: 14px; }
+    .logo { max-width: 180px; } /* Shrinks logo slightly for small screens */
+}
+
+/* BACK TO TOP BUTTON: Floating style */
+#backToTop {
+    display: none; /* Hidden by default */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: var(--dark); /* Using your existing dark colour */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%; /* Circular button */
+    font-size: 18px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    transition: opacity 0.3s;
+}
+
+#backToTop:hover {
+    background-color: var(--morsogreen); /* Changes to morso green on hover/tap */
+}
+      
+    </style>
+
+<header>
+<img src="morso-logo-blue-tp.png" alt="Morso" class="logo">
+    <div class="tagline">
+        Morso is an everyday cafe built around comfort, familiarity, and simple food done right. A welcoming neighbourhood space where good food, calm vibes, and genuine comfort come together.
+    </div>
+    
+</header>
+
+<div class="accordion">
+<!-- START OF MENU ITEMS --> 
+<button class="section-title">Eggs & more <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Sunny Side Up</span> <span class="item-price">₹159</span></div>
+        <span class="item-desc">Golden yolks with tender whites, cooked gently. Best enjoyed with toast and slow mornings.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">French Omlette</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Fluffy, folded omelette with herbs and a light finish. Elegant yet comforting.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Scrambled Eggs</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Soft, buttery scrambled eggs cooked just right. Simple, comforting and perfect to start your day.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Masala Omelette</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">A familiar favourite with onions, chillies and spices. Warm, flavourful and satisfying.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29, Chicken</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer Akuri</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Crumbled paneer tossed with onions, tomatoes and mild spices. A hearty, homely take on the classic akuri.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mexican Eggs</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Eggs cooked with peppers, beans and bold spices. A lively plate with just the right kick.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Avocado Egg Omelette</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Creamy avocado folded into soft eggs. Light, wholesome and filling.</span>
+        <div class="upgrades">Upgrades: Guac (60 gms): ₹ 139, Cheese (20 gms): ₹ 29</div>
+    </div>
+</div>
+
+<button class="section-title">Croissants <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Butter Croissant</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Light, flaky and baked golden. Simple pleasure with your morning coffee.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chocolate Croissant</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Buttery layers wrapped around melted chocolate. Warm, soft and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Almond Croissant</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Flaky croissant filled with almond cream and a gentle crunch. Subtle and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Nutella Croissant</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Crisp layers filled with smooth Nutella. Sweet, nostalgic and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Scrambled Egg & Cheese Croissant</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Soft scrambled eggs and melted cheese tucked into a warm croissant. A wholesome breakfast favourite.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mushroom & Cheese Croissant</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Sautéed mushrooms with melted cheese in flaky layers. Savoury and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Chicken Croissant</span> <span class="item-price">₹299</span></div>
+        <span class="item-desc">Tender grilled chicken in a warm croissant. Hearty yet light.</span>
+        <div class="upgrades">Upgrades: Cheese (20 gms): ₹ 29</div>
+    </div>
+</div>
+
+<button class="section-title">Sweet Brioche Toasts <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Honey Butter Toast</span> <span class="item-price">₹159</span></div>
+        <span class="item-desc">Warm brioche with melting butter and a drizzle of honey. Simple and nostalgic.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">French Toast</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Golden brioche dipped and griddled till soft inside. A café classic done right.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Crème Brule Toast</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Caramelised sugar crust over soft brioche. Crisp on top, tender beneath.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Strawberry French Toast</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Classic French toast topped with sweet strawberries. Light and cheerful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Nutella Banana Toast</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Soft brioche topped with Nutella and fresh banana. Sweet, warm and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Tiramisu Toast</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Coffee-soaked brioche with creamy topping and cocoa dusting. Gentle indulgence.</span>
+    </div>
+</div>
+
+<button class="section-title">Sourdough Open Toasts <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Paneer Toast</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Grilled paneer with fresh toppings on crisp sourdough. Hearty and wholesome.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mushroom Cheese Toast</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Sautéed mushrooms and melted cheese on warm sourdough. Savoury and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chicken Cheese Toast</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Tender chicken on sourdough. Simple and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Avocado Egg Toast</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Creamy avocado and eggs on toasted sourdough. Fresh, balanced and filling.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Avocado and Feta</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Avocado with crumbled feta on sourdough. Creamy with a gentle tang.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Guac toast</span> <span class="item-price">₹299</span></div>
+        <span class="item-desc">Chunky guacamole on crisp sourdough. Bright, fresh and satisfying.</span>
+    </div>
+</div>
+
+<button class="section-title">Grilled Panini Sandwiches <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">The Bombay Panini</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">A nod to classic Bombay flavours, toasted crisp and served warm. Familiar and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Veg Panini</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Fresh vegetables and cheese pressed till golden. Simple and filling.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cheese Panini</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Melted cheese between crisp grilled bread. Comfort in every bite.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Pesto Paneer Panini</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Grilled paneer with herby pesto, toasted to perfection. Fresh and flavourful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mushroom Melt</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Juicy mushrooms with melted cheese in a crisp press. Savoury and rich.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Chicken</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Tender grilled chicken, pressed warm and golden. A dependable favourite.</span>
+    </div>
+</div>
+
+<button class="section-title">Salads <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Tangy Asian Salad</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Fresh vegetables tossed in a light, tangy dressing with a gentle crunch. Bright and refreshing.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹89, Paneer (100 gms): ₹79</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Classic Ceasar Salad</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Crisp greens with creamy dressing, parmesan and crunch. A timeless café classic.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹89, Paneer (100 gms): ₹79</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer Power Salad</span> <span class="item-price">₹289</span></div>
+        <span class="item-desc">Grilled paneer with fresh greens and wholesome add-ins. A hearty, protein-packed bowl.</span>
+    </div>
+</div>
+
+<button class="section-title">Morsels <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Classic Fries</span> <span class="item-price">₹129</span></div>
+        <span class="item-desc">Golden, crisp fries with a soft centre. Lightly salted and always comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">House Fav Peri Peri Fries</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Crisp fries tossed in our peri peri spice. Warm heat with everyday comfort.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chilli Garlic Fries</span> <span class="item-price">₹159</span></div>
+        <span class="item-desc">Fries tossed in chilli and garlic. Bold, aromatic and hard to stop at one bite.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Sourdough Garlic Bread</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Warm sourdough brushed with garlic butter. Simple, fragrant and comforting.</span>
+        <div class="upgrades">Upgrades: Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cheesy Fries</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Crisp fries topped with warm, melted cheese. Simple and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Wasabi Mayo Fries</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Crisp fries served with a creamy wasabi mayo. Mild heat with a smooth finish.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">The Nachos & Salsa</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Crisp nachos served with fresh salsa. Easy, familiar and perfect with coffee or coolers.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Cheese (20 gms): ₹ 29, Guac (60 gms): ₹ 139</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Koren Cheese Fries</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Fries layered with Korean style seasoning and cheese. Savoury with a gentle kick.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Japanese Pakora</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Light, crisp fritters with a subtle Asian twist. Crunchy and addictive.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer Green Thecha Cutlets</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Crisp cutlets with a bold green thecha kick. Spicy, satisfying and perfect to share.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer Popcorn</span> <span class="item-price">₹289</span></div>
+        <span class="item-desc">Bite-sized crispy paneer pieces with a gentle spice. Fun and flavourful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Crispy Chicken Tenders</span> <span class="item-price">₹299</span></div>
+        <span class="item-desc">Golden fried chicken strips, juicy inside and crisp outside. Crowd favourite.</span>
+    </div>
+</div>
+
+<button class="section-title">Pancakes <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Classic Pancake</span> <span class="item-price">₹159</span></div>
+        <span class="item-desc">Soft, fluffy pancakes served warm. A comforting café staple.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chocolate Pancake</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Fluffy pancakes with rich chocolate notes. Sweet and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Blueberry Pancake</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Light pancakes dotted with blueberries. Soft, fruity and balanced.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Nutella Pancake</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Warm pancakes layered with smooth Nutella. A simple crowd favourite.</span>
+    </div>
+</div>
+
+<button class="section-title">Burgers <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Classic Veg Burger</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">A hearty veg patty with fresh toppings in a soft bun. Familiar and filling.</span>
+        <div class="upgrades">Upgrades: Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Chicken Burger</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Tender grilled chicken with fresh greens in a toasted bun. Simple and satisfying.</span>
+        <div class="upgrades">Upgrades: Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Crispy Chicken Burger</span> <span class="item-price">₹319</span></div>
+        <span class="item-desc">Crisp fried chicken in a soft bun with fresh toppings. Crunchy outside, tender inside.</span>
+        <div class="upgrades">Upgrades: Cheese (20 gms): ₹ 29</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Double Cheese Smash Chicken Burger</span> <span class="item-price">₹349</span></div>
+        <span class="item-desc">Two juicy smashed chicken patties with generous melted cheese. Big, bold and indulgent.</span>
+    </div>
+</div>
+
+<button class="section-title">Pizza <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Margherita</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Tomato sauce and mozzarella on a thin, crisp base finished with basil. Simple and timeless.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Spicy Corn & Jalapeño Pizza</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Sweet corn and jalapeños over melted cheese. Mild heat with comforting flavours.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Farm Veg Pizza</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Loaded with fresh vegetables and cheese on a crisp base. Wholesome and hearty.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Spicy Paneer Pizza</span> <span class="item-price">₹299</span></div>
+        <span class="item-desc">Spiced paneer with peppers and cheese. Warm flavours with a gentle kick.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">White Pizza (Mushroom & Garlic)</span> <span class="item-price">₹299</span></div>
+        <span class="item-desc">Creamy white base topped with mushrooms and garlic. Rich, savoury and balanced.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Chicken Pizza</span> <span class="item-price">₹349</span></div>
+        <span class="item-desc">Tender grilled chicken on a thin, crisp base with fresh toppings. Comforting and hearty.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Half n Half</span> <span class="item-price">₹349</span></div>
+        <span class="item-desc">Choose two flavours on one crisp base. Perfect for sharing or when you cannot decide.</span>
+    </div>
+</div>
+
+<button class="section-title">Pocket Pizza <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Veg</span> <span class="item-price">₹129</span></div>
+        <span class="item-desc">Fresh vegetables and cheese folded into a warm, crisp pocket. Easy and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mushroom</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Savoury mushrooms with melted cheese in a handheld pocket. Simple and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Grilled Chicken</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Tender grilled chicken wrapped in a warm pocket. A quick, wholesome bite.</span>
+    </div>
+</div>
+
+<button class="section-title">Grab n Go Pocket Pizza <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Spiced paneer with cheese tucked into a crisp pocket. Hearty and filling.</span>
+    </div>
+</div>
+
+<button class="section-title">Pasta <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Spaghetti Aglio-e-Olio</span> <span class="item-price">₹219</span></div>
+        <span class="item-desc">Spaghetti tossed with olive oil and garlic. Aromatic, simple and beautifully balanced.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Mushroom (100 gms): ₹ 59</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Penne Arrabiatta</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Penne in a garlic and chilli tomato sauce. Light heat with comforting depth.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Mushroom (100 gms): ₹ 59</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Penne Cheese</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Penne folded into a creamy cheese sauce. Warm, rich and satisfying.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Mushroom (100 gms): ₹ 59</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Penne Pink Sauce</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Penne in a tomato and cream sauce. Balanced, comforting and easy to love.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Mushroom (100 gms): ₹ 59</div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Spaghetti Chilli Cream Pasta</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Spaghetti in a smooth chilli cream sauce. Creamy with a gentle warmth.</span>
+        <div class="upgrades">Upgrades: Grilled Chicken (70 gms): ₹ 89, Mushroom (100 gms): ₹ 59</div>
+    </div>
+</div>
+
+<button class="section-title">Smoothie Bowls <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mixed Berry Bowl</span> <span class="item-price">₹259</span></div>
+        <span class="item-desc">Creamy berry smoothie bowl topped with fresh fruits and crunch. Bright and wholesome.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Strawberry Bowl</span> <span class="item-price">₹259</span></div>
+        <span class="item-desc">Smooth strawberry base with fresh toppings. Light, fruity and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Blueberry Bowl</span> <span class="item-price">₹259</span></div>
+        <span class="item-desc">Blueberry smoothie bowl layered with fresh textures. Balanced and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Avocado Honey Bowl</span> <span class="item-price">₹349</span></div>
+        <span class="item-desc">Creamy avocado blended with honey. Smooth, rich and naturally sweet.</span>
+    </div>
+</div>
+
+<button class="section-title">Morso Bowls <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Home-Style Dal Tadka Bowl</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Simple dal tadka served warm over rice. Honest, homely comfort in a bowl.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Delhi-Style Rajma Bowl</span> <span class="item-price">₹159</span></div>
+        <span class="item-desc">Slow cooked rajma with rice, inspired by Delhi flavours. Simple and soulful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Masala Egg Curry Bowl</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Eggs simmered in a spiced curry with rice. Warm, hearty and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Creamy Makhani Paneer Bowl</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Soft paneer in a rich makhani gravy with rice. Familiar and deeply comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Butter Chicken Bliss Bowl</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Tender chicken in a creamy tomato gravy with rice. A classic done right.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Veg Asian Bowl</span> <span class="item-price">₹219</span></div>
+        <span class="item-desc">Fresh vegetables, rice and Asian style flavours in one balanced bowl. Light, wholesome and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mushroom Asian Bowl</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Sautéed mushrooms with rice and Asian seasonings. Savoury, warm and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Paneer Asian Bowl</span> <span class="item-price">₹269</span></div>
+        <span class="item-desc">Grilled paneer with rice and bold Asian flavours. Hearty and flavourful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chicken Asian Bowl</span> <span class="item-price">₹279</span></div>
+        <span class="item-desc">Tender chicken with rice and fresh vegetables. A wholesome, balanced meal.</span>
+    </div>
+</div>
+
+<button class="section-title">Proper Meal <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Veg Pomodoro Crema</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Vegetables in a light tomato cream sauce served as a complete meal. Comforting and balanced.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Pesto Paneer</span> <span class="item-price">₹329</span></div>
+        <span class="item-desc">Grilled paneer tossed in fresh pesto. Fresh, herby and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chicken Pepenero</span> <span class="item-price">₹349</span></div>
+        <span class="item-desc">Tender chicken in a peppery sauce. Warm, hearty and full of flavour.</span>
+    </div>
+</div>
+
+<button class="section-title">Dessert <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cinnamon Roll</span> <span class="item-price">₹169</span></div>
+        <span class="item-desc">Soft roll layered with cinnamon sugar and baked till golden. Warm and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Brownie with Ice-Cream and Choc Sauce</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Warm chocolate brownie topped with ice cream and rich sauce. Classic café indulgence.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cheesecake Slice</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Creamy baked cheesecake, flavour of the day. Smooth, light and satisfying.</span>
+    </div>
+</div>
+
+<button class="section-title">Brewed Hot <span>+</span></button>
+<div class="content">
+<div style="padding: 10px 15px; margin-bottom: 15px; border-bottom: 1px dashed #ddd; font-style: italic; font-size: 0.85rem; color: var(--morsoblue); line-height: 1.4;">
+    We brew our coffee with beans from Baarbara Estate in the Babudangiri hills of Karnataka. A single origin 100% Arabica, medium dark roast with gentle notes of citrus, dark chocolate, red berries and caramel.
+</div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Babycinno</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Steamed milk with light foam and a hint of chocolate. Gentle and cosy.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Espresso Shot</span> <span class="item-price">₹89</span></div>
+        <span class="item-desc">Short pulled espresso with a rich crema and bold finish.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Doppio</span> <span class="item-price">₹129</span></div>
+        <span class="item-desc">Double shot of espresso. Strong, smooth and full bodied.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Americano</span> <span class="item-price">₹139</span></div>
+        <span class="item-desc">Espresso topped with hot water. Clean, balanced and easy to sip.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Tall Black</span> <span class="item-price">₹139</span></div>
+        <span class="item-desc">Hot water crowned with fresh espresso. Bold yet smooth.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cortado</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Espresso balanced with equal warm milk. Intense and smooth.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cappuccino</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Espresso with steamed milk and foam. Creamy and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Flat White</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Espresso with velvety microfoam. Rich and well rounded.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Spanish Latte</span> <span class="item-price">₹179</span></div>
+        <span class="item-desc">Espresso blended with condensed milk and steamed milk. Gently sweet and smooth.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Vienna</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Hot espresso crowned with whipped cream. Rich and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Irish Coffee</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Espresso with Irish cream flavour and a smooth finish. Warm and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Latte</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Espresso blended with silky steamed milk. Simple and dependable.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Hot Chocolate</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Melted chocolate blended with milk. Rich, warm and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mocha</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Espresso with dark chocolate and milk. Smooth and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Matcha Latte</span> <span class="item-price">₹209</span></div>
+        <span class="item-desc">Smooth matcha whisked with milk. Earthy, balanced and calming.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Bombon</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Espresso layered over condensed milk. Sweet, strong and striking.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Caramel Latte</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Creamy milk coffee with buttery caramel notes. Smooth and familiar.</span>
+    </div>
+<div class="upgrades">Upgrades: Irish, Vanilla, Hazelnut, Caramel: ₹ 39</div>
+</div>
+
+<button class="section-title">Chai Brew <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Masala Chai</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Black tea brewed with milk and whole spices. Aromatic and warming.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Lemon Grass Ginger Tea</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Lemongrass and ginger infusion. Bright, fragrant and naturally warming.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Pure Green Tea</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Whole green leaves steeped gently. Clean and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Hibiscus Tea</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Ruby red infusion with a bright, tangy finish. Light and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chamomile Tea</span> <span class="item-price">₹79</span></div>
+        <span class="item-desc">Gentle floral tea with calming notes. Soft and soothing.</span>
+    </div>
+</div>
+
+<button class="section-title">Chilled Brews <span>+</span></button>
+<div class="content">
+<div style="padding: 10px 15px; margin-bottom: 15px; border-bottom: 1px dashed #ddd; font-style: italic; font-size: 0.85rem; color: var(--morsoblue); line-height: 1.4;">
+    We brew our coffee with beans from Baarbara Estate in the Babudangiri hills of Karnataka. A single origin 100% Arabica, medium dark roast with gentle notes of citrus, dark chocolate, red berries and caramel.
+</div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Iced Americano</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Espresso over ice with chilled water. Crisp and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cold Brew</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Slow steeped for 24 hours. Smooth, low acid and easy to drink.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Dirty Coffee</span> <span class="item-price">₹189</span></div>
+        <span class="item-desc">Cold milk layered with fresh espresso. Aromatic and beautifully layered.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Classic Cold Coffee</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Espresso blended with ice cream. Thick, nostalgic and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Iced Latte</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Espresso and chilled milk over ice. Clean and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Iced Matcha Latte</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Chilled matcha blended with milk. Light and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Salted Caramel Iced Matcha Latte</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Matcha with milk and salted caramel. Sweet with a gentle savoury note.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Strawberry Iced Matcha Latte</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Iced matcha topped with strawberry cream. Fresh and playful.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cloud Matcha</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Creamy matcha foam over coconut water. Light, smooth and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Matcha Thai Latte</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Matcha whisked with condensed milk and warm spice notes. Creamy and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Espresso-Cran</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Espresso with cranberry fizz and citrus notes. Tangy and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Affogato</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Hot espresso poured over vanilla ice cream. Warm meets cold beautifully.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Espresso Tonic</span> <span class="item-price">₹219</span></div>
+        <span class="item-desc">Espresso over tonic with citrus notes. Bright and lively.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mont blanc</span> <span class="item-price">₹219</span></div>
+        <span class="item-desc">Iced espresso with orange, brown sugar and cream. Smooth with a citrus lift.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Cold Brew with Milk</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Smooth cold brew finished with chilled milk. Balanced and mellow.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Korean Espresso</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Iced espresso topped with soft cream foam. Smooth and lightly sweet.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Tiramisu Iced Espresso</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Iced espresso layered with creamy topping and cocoa. Dessert in a glass.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Vietnamese</span> <span class="item-price">₹229</span></div>
+        <span class="item-desc">Strong iced coffee with condensed milk. Bold, sweet and satisfying.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Vanilla Cream Cold Brew</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Cold brew topped with light vanilla cream. Smooth with a gentle sweetness.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Caramel Cream Cold Brew</span> <span class="item-price">₹239</span></div>
+        <span class="item-desc">Chilled brew finished with silky caramel cream. Rich yet refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Yuzu Iced Americano</span> <span class="item-price">₹249</span></div>
+        <span class="item-desc">Cold espresso with bright yuzu citrus. Fresh and vibrant.</span>
+    </div>
+</div>
+
+<button class="section-title">Shake Bar <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Vanilla Shake</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Thick, creamy vanilla milkshake. Smooth and comforting.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Chocolate Shake</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Rich chocolate blended into a thick, chilled shake. Classic and indulgent.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Strawberry Milkshake</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Fresh strawberry flavour in a creamy shake. Sweet and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Protein Shake (1 scoop) - 26g Unflavoured</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">26g protein blended smooth. Clean, simple and nourishing.</span>
+        <div class="upgrades">Upgrades: Any Flavour (Irish, Vanilla, Hazelnut, Caramel): ₹ 39, Espresso shot</div>
+    </div>
+</div>
+
+<button class="section-title">Super Coolers <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">House Lemonade</span> <span class="item-price">₹139</span></div>
+        <span class="item-desc">Fresh lemon with soda. Clean, zesty and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Peach Iced Tea</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Slow brewed tea infused with ripe peach. Smooth and lightly sweet.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Italian Orange Cooler</span> <span class="item-price">₹149</span></div>
+        <span class="item-desc">Orange juice with basil and tonic. Bright and lightly citrusy.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Yuzu Citrus Cooler</span> <span class="item-price">₹199</span></div>
+        <span class="item-desc">Yuzu blended with soda and fresh citrus. Crisp and refreshing.</span>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Packed Juice</span> <span class="item-price">₹99</span></div>
+        <span class="item-desc">Chilled bottled juice for a quick, easy refresh.</span>
+    </div>
+</div>
+
+<button class="section-title">Bottled Beverages <span>+</span></button>
+<div class="content">
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Mineral Water</span> <span class="item-price">₹20</span></div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Diet Coke</span> <span class="item-price">₹59</span></div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Coke</span> <span class="item-price">₹59</span></div>
+    </div>
+    <div class="menu-item">
+        <div class="item-row"><span class="item-name">Tonic water</span> <span class="item-price">₹69</span></div>
+    </div>
+</div>
+  
+<!-- END OF MENU ITEMS --> 
+</div>
+
+<!-- Start OF Dynamic Reviews --> 
+  <div class="accordion" style="text-align: center;">
+    <h3 style="text-align:center; text-transform:uppercase; letter-spacing:2px; margin-top:40px;">What People Say</h3>
+    
+    <div id="review-container" style="background: #fff; border: 1px solid #eee; padding: 20px 20px; border-radius: 12px; min-height: 100px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <p id="review-text" style="font-size: 0.9rem; margin-bottom: 10px; color: var(--dark);"></p>
+        <small id="review-author" style="color: var(--morsogreen); font-weight: bold; text-transform: uppercase; letter-spacing: 0.7px;"></small>
+    </div>
+
+    </div>
+  
+<!-- END OF Dynamic Reviews --> 
+<footer>
+    <div class="footer-address">
+        <span style="color: var(--morsoblue);"><strong>morso</strong></span> | <span style="color: var(--morsoblue);">Everyday Food and Coffee</span><br>
+        S. No. 33, The Bougain Studio, Unit 4, Ashtavinayak Rd, Balewadi, Pune, Maharashtra 410045<br /><strong>Contact:</strong> +91 8766917162 |  <a href="https://wa.me/918766917162"><strong>WhatsApp</strong></a> | <a href="https://www.instagram.com/morso.pune">@morso.pune</a>
+    </div>
+</footer>
+<button onclick="topFunction()" id="backToTop" title="Go to top">↑</button>
+
+<script>
+// Get the button
+let mybutton = document.getElementById("backToTop");
+
+// When the user scrolls down 300px from the top, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth' // This makes the scroll unhurried and smooth
+  });
+}
+    const acc = document.getElementsByClassName("section-title");
+    for (let i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            const content = this.nextElementSibling;
+            const span = this.querySelector('span');
+            
+            // Toggle current section
+            if (content.style.display === "block") {
+                content.style.display = "none";
+                span.innerText = "+";
+            } else {
+                content.style.display = "block";
+                span.innerText = "-";
+            }
+        });
+    }
+</script>
+
+<script>
+   
+// DYNAMIC REVIEWS: Condensed from your actual customer feedback
+const reviews = [
+    { text: "Perfectly crisp garlic mushroom pizza and a rich, smooth mocha. You can taste the quality in every sip.", author: "Vaibhav Dugar" },
+    { text: "A warm little corner for people who love good food, good coffee, and good company. Truly special.", author: "Vaibhav Dugar" },
+    { text: "The kind of friendly neighbourhood cafe where you can sit quietly with a book or have a meaningful chat.", author: "Vaibhav Dugar" },
+    { text: "Every bite felt comforting and satisfying. There is a certain positivity in the air here.", author: "Vaibhav Dugar" },
+    { text: "What touched my heart was the sincerity. The founders genuinely listen to every small detail.", author: "Vaibhav Dugar" },
+    { text: "Happy, smiling faces and a warm, friendly vibe. A place that makes you want to stay a little longer.", author: "Vaibhav Dugar" },
+    { text: "Good coffee, clean space and a promising menu! A great addition to Balewadi.", author: "Rahul Mali" },
+    { text: "Quiet, easy to talk, and plenty of parking. Exactly what a neighbourhood cafe should be.", author: "Rahul Mali" }
+];
+
+    // Function to pick and display a random review
+    function showRandomReview() {
+        const randomIndex = Math.floor(Math.random() * reviews.length);
+        const selectedReview = reviews[randomIndex];
+        
+        document.getElementById('review-text').innerText = `"${selectedReview.text}"`;
+        document.getElementById('review-author').innerText = `- ${selectedReview.author}`;
+    }
+
+    // Run this function as soon as the page loads
+    window.onload = function() {
+        showRandomReview();
+        // If you have other onload functions, add them here
+    };
+</script>
+
